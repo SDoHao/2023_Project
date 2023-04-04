@@ -33,7 +33,6 @@ int main()
 		vector<string> vstr = _split(str, d);
 		for (int i = vstr.size() - 1; i >=0 ; i--)
 			cout << vstr[i] << ' ';
-
 	}
 
 	return 0;
