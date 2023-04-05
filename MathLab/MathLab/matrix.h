@@ -82,6 +82,21 @@ namespace mathlab
 			mt_Data = c.mt_Data;
 		}
 
+		void ReadText(char *_szpath)
+		{
+
+		}
+
+		size_t GetRowSize()
+		{
+			return rows;
+		}
+
+		size_t GetColSize()
+		{
+			return  cols;
+		}
+
 		void InitNumber(size_t st, double a);
 		bool isNotOutBounds(size_t row, size_t col);
 		double GetElementValue(size_t row, size_t col);
