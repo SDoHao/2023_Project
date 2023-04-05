@@ -62,38 +62,6 @@ void BFS(std::queue<POS> &_q,Matrix& _mat,size_t x,size_t y)
 		_q.pop();
 		std::vector<POS> _vpos;
 		FindNeighbor(_mat, _t.x, _t.y, _vpos);
-		/*std::vector<POS> _vpos;
-		r = _t.x;
-		c = _t.y;
-		if (r != 0 && _mat.GetElementValue(r - 1, c) == 0)
-		{
-			POS a;
-			a.x = r - 1;
-			a.y = c;
-			_vpos.push_back(a);
-		}
-		if (r != _mat.GetRowSize() - 1 && _mat.GetElementValue(r + 1, c) == 0)
-		{
-			POS a;
-			a.x = r + 1;
-			a.y = c;
-			_vpos.push_back(a);
-		}
-		if (c != 0 && _mat.GetElementValue(r, c - 1) == 0)
-		{
-			POS a;
-			a.x = r;
-			a.y = c - 1;
-			_vpos.push_back(a);
-		}
-		if (c != _mat.GetColSize() - 1 && _mat.GetElementValue(r, c + 1) == 0)
-		{
-			POS a;
-			a.x = r;
-			a.y = c + 1;
-			_vpos.push_back(a);
-		}*/
-
 		std::vector<POS>::iterator _ivp;
 		for (_ivp = _vpos.begin(); _ivp < _vpos.end(); _ivp++)
 		{
@@ -125,7 +93,6 @@ int main()
 	std::queue<POS> Q;
 	BFS(Q, maze, 0, 0);
 
-	
     return 0;
 }
 
