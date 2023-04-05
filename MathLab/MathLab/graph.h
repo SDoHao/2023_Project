@@ -3,7 +3,6 @@
 #include<iostream>
 #include<vector>
 #include<cmath>
-
 #include"matrix.h"
 #include"message.h"
 #define M_PI  4 * atan(1)
@@ -95,7 +94,7 @@ namespace mathlab
 		return MT_Move;
 	}
 
-	 Matrix& Graph::Scale(double sx, double sy, double sz)
+	Matrix& Graph::Scale(double sx, double sy, double sz)
 	{
 		MT_Move.Replace(0, 0, sx);
 		MT_Move.Replace(1, 1, sy);
@@ -103,6 +102,8 @@ namespace mathlab
 
 		return MT_Scale;
 	}
+
+
 
 	inline double Graph::AngleToRadian(double theta)
 	{
