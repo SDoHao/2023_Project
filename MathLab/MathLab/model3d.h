@@ -17,7 +17,7 @@ namespace mathlab
 		std::vector<Matrix> m3dPointData;
 	public:
 		Model_3D() {}
-		Model_3D(char *_szpath, Graph _graph):_graph(_graph)
+		Model_3D(char *_szpath)
 		{
 			double a;
 			int i;

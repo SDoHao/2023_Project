@@ -2,7 +2,9 @@
 #define MATRIX_H
 #include<iostream>
 #include<vector>
+#include <cctype>
 #include"message.h"
+#include"csvfile.h"
 
 namespace mathlab
 {
@@ -41,6 +43,19 @@ namespace mathlab
 			isInit = false;
 			InitNumber(0, value);
 		}
+		Matrix(char *_szpath)
+		{
+			file::CSVFile _scv(_szpath);
+			rows = _scv.GetRowSize();
+			cols = _scv.GetColSize();
+			isInit = true;
+			index = rows * cols;
+			for (int i = 0; i < rows ; i++)
+				for (int j = 0; j < cols; j++)
+					mt_Data.push_back(atof(_scv.GetData(i, j).c_str()));
+			
+		}
+
 		//¿½±´º¯Êý
 		Matrix(const Matrix & c) 
 		{

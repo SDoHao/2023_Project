@@ -1,18 +1,27 @@
 #include<iostream>
 #include"matrix.h"
-#include"graph.h"
 #include"model3d.h"
 #include"draw.h"
 
-
 using namespace mathlab;
-
 
 int main()
 {
-	Graph _graph;
-	Model_3D _m3d("pointdata.ini", _graph);
-	Draw3D(_m3d,1000,50, 0, 0, 30);
+	//Draw a 3D model heart
+	Model_3D _m3d("pointdata.ini");
+	Draw3D(_m3d, 7, 50, 0, 0, 30);
+
+	//BFS
+
+	std::cout << std::endl;
+	Matrix maze("maze.csv");
+	std::cout << maze;
+
+
+
+
+
+
     return 0;
 }
 
