@@ -18,7 +18,7 @@ void Inster(List &list, int a, int b)
 {
 	List * t = &list;
 	List * plist = new List(a);
-	while (t && t->val != b)
+	while (t->val != b)
 		t = t->next;
 	plist->next = t->next;
 	t->next = plist;
@@ -35,12 +35,13 @@ void Delete(List & list, int a)
 	else
 	{
 		List * pre = t;
-		while (t && t->val != a)
+		while (t->val != a)
 		{
 			pre = t;
 			t = t->next;
 		}
 		pre->next = t->next;
+		delete t;
 	}
 }
 
