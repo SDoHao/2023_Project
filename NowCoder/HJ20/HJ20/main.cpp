@@ -55,12 +55,13 @@ int main()
 						if ((str[i] == str[j]) && (str[i + 1] == str[j + 1]) && (str[i + 2] == str[j + 2]))
 						{
 							isNotRepat = false;
-							cout << "NG" << endl;
 						}
 					}
 				}
 				if (isNotRepat)
 					cout << "OK" << endl;
+				else
+					cout << "NG" << endl;
 			}
 		}
 	}
