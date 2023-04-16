@@ -9,30 +9,37 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution {
+class Solution 
+{
 public:
-    vector<vector<int>> levelOrder(TreeNode* root) 
+    int BFS(TreeNode* root)
     {
-        vector<vector<int>> ret;
-        if(!root)return ret;
+        int val;
         queue<TreeNode*> q;
-        int n;
-        TreeNode* _tn;
         q.push(root);
+        TreeNode * top_tn;
+        int n;
         while(!q.empty())
         {
             n = q.size();
-            vector<int> temp;
-            ret.push_back(temp);
+            top_tn = q.front();
+            val = top_tn->val;
             for(int i = 0;i < n;i++)
             {
-                _tn = q.front();
+                top_tn = q.front();
                 q.pop();
-                ret.back().push_back(_tn->val);
-                if(_tn->left)q.push(_tn->left);
-                if(_tn->right)q.push(_tn->right);
+                if(top_tn->left)
+                    q.push(top_tn->left);
+                if(top_tn->right)
+                    q.push(top_tn->right);
             }
         }
-        return ret;
+        return val;
+    }
+
+
+    int findBottomLeftValue(TreeNode* root) 
+    {
+        return BFS(root);
     }
 };
