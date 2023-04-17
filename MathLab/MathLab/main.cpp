@@ -21,6 +21,8 @@ int main()
 	std::cout << maze2.Inverse() << std::endl;
 	std::cout << maze1 *  maze2 << std::endl;
 	std::cout << maze1 *  maze2.Inverse() << std::endl;
+	std::cout << maze1 /  maze2 << std::endl;
+	std::cout << maze1.Adjoint() << std::endl;
 
 	////BFS
 	//std::cout << std::endl;

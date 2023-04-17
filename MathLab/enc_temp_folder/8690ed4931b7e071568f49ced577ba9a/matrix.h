@@ -271,7 +271,7 @@ namespace mathlab
 		}
 		int n = rows;
 		int nn = 2 * n;
-		double t, a;
+
 		Matrix mat(n, nn,0);
 		
 		// 初始化n x n部分为原矩阵，0 x n到n x 2n部分为单位矩阵
@@ -285,18 +285,14 @@ namespace mathlab
 		}
 		// 高斯-约旦消元，转换为上三角矩阵
 		for (int i = 0; i < n; i++) {
-			t = mat.mt_Data[i * nn + i];
-			for (int k = i; k < nn; k++) 
-			{
+			double t = mat.mt_Data[i * nn + i];
+			for (int k = i; k < nn; k++) {
 				mat.mt_Data[i * nn + k] /= t;
 			}
-			for (int j = 0; j < n; j++) 
-			{
-				if (j == i) 
-					continue;
-				a = mat.mt_Data[j * nn + i];
-				for (int k = i; k < nn; k++) 
-				{
+			for (int j = 0; j < n; j++) {
+				if (j == i) continue;
+				double a = mat.mt_Data[j * nn + i];
+				for (int k = i; k < nn; k++) {
 					mat.mt_Data[j * nn + k] = mat.mt_Data[j * nn + k] - a * mat.mt_Data[i * nn + k];
 				}
 			}
@@ -317,23 +313,18 @@ namespace mathlab
 			info::Error(info::GetMessage(6));
 		}
 		int size = rows;
-		int sign;
 		Matrix adj(size, size);
-		for (int i = 0; i < size; i++) 
-		{
-			for (int j = 0; j < size; j++) 
-			{
+		for (int i = 0; i < size; i++) {
+			for (int j = 0; j < size; j++) {
 				Matrix tmp(size - 1, size - 1);
-				for (int k = 0; k < size - 1; k++) 
-				{
-					for (int l = 0; l < size - 1; l++) 
-					{
+				for (int k = 0; k < size - 1; k++) {
+					for (int l = 0; l < size - 1; l++) {
 						int row = k + (k >= i);
 						int col = l + (l >= j);
 						tmp.mt_Data[k * size + l - k] = mt_Data[row * size + col];
 					}
 				}
-				sign = ((i + j) % 2 == 0) ? 1 : -1;
+				int sign = ((i + j) % 2 == 0) ? 1 : -1;
 				adj.mt_Data[j * size + i] = sign * tmp.Determinant();
 			}
 		}
