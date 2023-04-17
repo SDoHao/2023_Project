@@ -8,7 +8,31 @@
 
 using namespace mathlab;
 
-typedef struct POS POS;
+int main()
+{
+	//Draw a 3D model heart
+	//Model_3D _m3d("pointdata.ini");
+	//Draw3D(_m3d, 7, 50, 0, 0, 30);
+	Matrix maze("maze.csv");
+	Matrix maze2(4,4,0);
+	maze2.DiagonalMatrix(2);
+	Matrix maze_t = maze.Transpose();
+	std::cout << maze << std::endl;
+	std::cout << maze_t << std::endl;
+	std::cout << maze2.Determinant() << std::endl;
+	////BFS
+	//std::cout << std::endl;
+	//Matrix maze("maze.csv");
+	//std::cout << maze;
+
+	//std::queue<POS> Q;
+	//BFS(Q, maze, 0, 0);
+    return 0;
+}
+
+
+
+/*typedef struct POS POS;
 struct POS
 {
 	size_t x;
@@ -28,7 +52,7 @@ void FindNeighbor(Matrix& visited, POS &node, std::vector<POS>& _pos)
 		a->x = r - 1;
 		a->y = c;
 		_pos.push_back(*a);
-	} 
+	}
 	if (r != visited.GetRowSize() - 1 && visited.GetElementValue(r + 1, c) == 0)
 	{
 		POS *a = new POS;
@@ -37,7 +61,7 @@ void FindNeighbor(Matrix& visited, POS &node, std::vector<POS>& _pos)
 		a->y = c;
 		_pos.push_back(*a);
 	}
-	if (c != 0 && visited.GetElementValue(r,c - 1) == 0)
+	if (c != 0 && visited.GetElementValue(r, c - 1) == 0)
 	{
 		POS *a = new POS;
 		a->father = &node;
@@ -55,7 +79,7 @@ void FindNeighbor(Matrix& visited, POS &node, std::vector<POS>& _pos)
 	}
 }
 
-void BFS(std::queue<POS> &_q,Matrix& _mat,size_t x,size_t y)
+void BFS(std::queue<POS> &_q, Matrix& _mat, size_t x, size_t y)
 {
 	POS _pos;
 	POS _t;
@@ -95,22 +119,4 @@ void BFS(std::queue<POS> &_q,Matrix& _mat,size_t x,size_t y)
 		}
 	}
 }
-
-
-int main()
-{
-	////Draw a 3D model heart
-	//Model_3D _m3d("pointdata.ini");
-	//Draw3D(_m3d, 7, 50, 0, 0, 30);
-
-	//BFS
-	std::cout << std::endl;
-	Matrix maze("maze.csv");
-	std::cout << maze;
-
-	std::queue<POS> Q;
-	BFS(Q, maze, 0, 0);
-
-    return 0;
-}
-
+*/
