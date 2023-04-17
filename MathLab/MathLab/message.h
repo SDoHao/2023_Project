@@ -13,6 +13,9 @@ namespace info
 		"Inconsistent array dimensions to concatenate.",
 		"Inconsistent matrix dimensions.",
 		"Insufficient data so reading encountered an error.[Line %d,Index %d]",
+		//6
+		"Matrix is not square.",
+		"Matrix is non-inversible",
 	};
 
 	void static Message(int i)
@@ -27,6 +30,11 @@ namespace info
 		printf("\n<<    ");
 		printf(message[i],ag1,ag2);
 		printf("\n");
+	}
+
+	static const char* GetMessage(int i)
+	{
+		return message[i];
 	}
 
 	inline void Error(const char* message)

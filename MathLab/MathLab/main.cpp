@@ -14,12 +14,10 @@ int main()
 	//Model_3D _m3d("pointdata.ini");
 	//Draw3D(_m3d, 7, 50, 0, 0, 30);
 	Matrix maze("maze.csv");
-	Matrix maze2(4,4,0);
-	maze2.DiagonalMatrix(2);
-	Matrix maze_t = maze.Transpose();
-	std::cout << maze << std::endl;
-	std::cout << maze_t << std::endl;
+	Matrix maze2("1.csv");
+	maze2.Transpose();
 	std::cout << maze2.Determinant() << std::endl;
+	std::cout << maze2.Inverse() << std::endl;
 	////BFS
 	//std::cout << std::endl;
 	//Matrix maze("maze.csv");

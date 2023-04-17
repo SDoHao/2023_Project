@@ -105,6 +105,10 @@ namespace mathlab
 		void ExpandRow(size_t add_rows);
 		void ExpandCol(size_t add_cols);
 		void InitZero(size_t row, size_t col);
+		Matrix Transpose(); // 矩阵转置
+		double Determinant();
+		Matrix Matrix::Inverse();
+
 		static friend std::ostream& operator<<(std::ostream& os, const Matrix & _matrix);
 		friend Matrix operator*(Matrix & _matrix1, Matrix & _matrix2);
 
@@ -211,6 +215,91 @@ namespace mathlab
 		rows = row;
 		cols = col;
 		index = row * col;
+	}
+
+	Matrix  Matrix::Transpose()
+	{
+		Matrix res(rows, cols);
+		for (int i = 0; i < rows; i++)
+			for (int j = 0; j < cols; j++)
+				res.mt_Data[j * cols + i] = mt_Data[i * cols+j];
+		return res;
+	}
+
+	// 求行列式的值
+	double  Matrix::Determinant()
+	{
+		if (rows != cols)
+		{
+			info::Message(6);
+			return 0;
+		}
+		double det = 1;
+		for (int i = 0; i < rows - 1; i++) 
+		{
+			if (mt_Data[i * cols + i] == 0) 
+			{
+				det = 0;
+				break;
+			}
+			for (int j = i + 1; j < rows; j++) 
+			{
+				double ratio = mt_Data[j * cols + i] / mt_Data[i * cols + i];
+				for (int k = i; k < cols; k++)
+					mt_Data[j * cols + k] -= ratio * mt_Data[i * cols + k];
+			}
+		}
+		for (int i = 0; i < rows; i++)
+			det *= mt_Data[i * cols + i];
+		return det;
+	}
+
+	// 求逆矩阵
+	Matrix Matrix::Inverse() 
+	{
+		if (rows != cols)
+		{
+			info::Error(info::GetMessage(6));
+		}
+		if (Matrix::Determinant() == 0)
+		{
+			info::Error(info::GetMessage(7));
+		}
+		int n = rows;
+		int nn = 2 * n;
+		Matrix mat(n, nn,0);
+		
+		// 初始化n x n部分为原矩阵，0 x n到n x 2n部分为单位矩阵
+		for (int i = 0; i < n; i++) 
+		{
+			mat.mt_Data[i * nn + i + n] = 1;
+			for (int j = 0; j < n; j++) 
+			{
+				mat.mt_Data[i * nn + j] = mt_Data[i * n + j];
+			}
+		}
+
+		// 高斯-约旦消元，转换为上三角矩阵
+		for (int i = 0; i < n; i++) {
+			double t = mat.mt_Data[i * nn + i];
+			for (int k = i; k < nn; k++) {
+				mat.mt_Data[i * nn + k] /= t;
+			}
+			for (int j = 0; j < n; j++) {
+				if (j == i) continue;
+				double a = mat.mt_Data[j * nn + i];
+				for (int k = i; k < nn; k++) {
+					mat.mt_Data[j * nn + k] = mat.mt_Data[j * nn + k] - a * mat.mt_Data[i * nn + k];
+				}
+			}
+		}
+		
+		// 获取结果逆矩阵（n x n右边的部分）
+		Matrix res(n, n, 0);
+		for (int i = 0; i < n; i++)
+			for (int j = 0; j < n; j++)
+				res.mt_Data[i * n + j] = mat.mt_Data[i * nn + j + n];
+		return res;
 	}
 
 	Matrix operator*(Matrix & _matrix1, Matrix & _matrix2)
