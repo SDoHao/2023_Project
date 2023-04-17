@@ -235,22 +235,24 @@ namespace mathlab
 			return 0;
 		}
 		double det = 1;
+		Matrix temp(*this);
+
 		for (int i = 0; i < rows - 1; i++) 
 		{
-			if (mt_Data[i * cols + i] == 0) 
+			if (temp.mt_Data[i * cols + i] == 0)
 			{
 				det = 0;
 				break;
 			}
 			for (int j = i + 1; j < rows; j++) 
 			{
-				double ratio = mt_Data[j * cols + i] / mt_Data[i * cols + i];
+				double ratio = temp.mt_Data[j * cols + i] / temp.mt_Data[i * cols + i];
 				for (int k = i; k < cols; k++)
-					mt_Data[j * cols + k] -= ratio * mt_Data[i * cols + k];
+					temp.mt_Data[j * cols + k] -= ratio * temp.mt_Data[i * cols + k];
 			}
 		}
 		for (int i = 0; i < rows; i++)
-			det *= mt_Data[i * cols + i];
+			det *= temp.mt_Data[i * cols + i];
 		return det;
 	}
 
@@ -267,6 +269,7 @@ namespace mathlab
 		}
 		int n = rows;
 		int nn = 2 * n;
+
 		Matrix mat(n, nn,0);
 		
 		// 初始化n x n部分为原矩阵，0 x n到n x 2n部分为单位矩阵
@@ -278,7 +281,6 @@ namespace mathlab
 				mat.mt_Data[i * nn + j] = mt_Data[i * n + j];
 			}
 		}
-
 		// 高斯-约旦消元，转换为上三角矩阵
 		for (int i = 0; i < n; i++) {
 			double t = mat.mt_Data[i * nn + i];

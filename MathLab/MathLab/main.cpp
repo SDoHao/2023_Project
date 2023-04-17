@@ -13,11 +13,15 @@ int main()
 	//Draw a 3D model heart
 	//Model_3D _m3d("pointdata.ini");
 	//Draw3D(_m3d, 7, 50, 0, 0, 30);
-	Matrix maze("maze.csv");
-	Matrix maze2("1.csv");
-	maze2.Transpose();
-	std::cout << maze2.Determinant() << std::endl;
+
+	Matrix maze1("1.csv");
+	Matrix maze2("2.csv");
+	std::cout << maze1 << std::endl;
+	std::cout << maze2 << std::endl;
 	std::cout << maze2.Inverse() << std::endl;
+	std::cout << maze1 *  maze2 << std::endl;
+	std::cout << maze1 *  maze2.Inverse() << std::endl;
+
 	////BFS
 	//std::cout << std::endl;
 	//Matrix maze("maze.csv");
