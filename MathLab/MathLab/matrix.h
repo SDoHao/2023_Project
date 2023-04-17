@@ -53,7 +53,6 @@ namespace mathlab
 			for (int i = 0; i < rows ; i++)
 				for (int j = 0; j < cols; j++)
 					mt_Data.push_back(atof(_scv.GetData(i, j).c_str()));
-			
 		}
 
 		//拷贝函数
@@ -106,8 +105,8 @@ namespace mathlab
 		void ExpandCol(size_t add_cols);
 		void InitZero(size_t row, size_t col);
 		Matrix Transpose(); // 矩阵转置
-		double Determinant();
-		Matrix Matrix::Inverse();
+		double Determinant();//求矩阵对应的行列式的值
+		Matrix Inverse();//求逆矩阵
 
 		static friend std::ostream& operator<<(std::ostream& os, const Matrix & _matrix);
 		friend Matrix operator*(Matrix & _matrix1, Matrix & _matrix2);
@@ -336,7 +335,7 @@ namespace mathlab
 		if (_matrix.isInit)
 		{
 			size_t i, j;
-			os << '[' << std::endl;
+			os <<"ans = "<< '[' << std::endl;
 			for (i = 0; i < _matrix.rows; i++)
 			{
 				os << "    ";
