@@ -17,12 +17,14 @@ int main()
 	Matrix maze1("1.csv");
 	Matrix maze2("2.csv");
 	std::cout << maze1 << std::endl;
-	std::cout << maze2 << std::endl;
-	std::cout << maze2.Inverse() << std::endl;
-	std::cout << maze1 *  maze2 << std::endl;
-	std::cout << maze1 *  maze2.Inverse() << std::endl;
-	std::cout << maze1 /  maze2 << std::endl;
-	std::cout << maze1.Adjoint() << std::endl;
+	maze1.ExpandCol(1);
+	std::cout << maze1 << std::endl;
+	//std::cout << maze2 << std::endl;
+	//std::cout << maze2.Inverse() << std::endl;
+	//std::cout << maze1 *  maze2 << std::endl;
+	//std::cout << maze1 *  maze2.Inverse() << std::endl;
+	//std::cout << maze1 /  maze2 << std::endl;
+	//std::cout << maze1.Adjoint() << std::endl;
 
 	////BFS
 	//std::cout << std::endl;

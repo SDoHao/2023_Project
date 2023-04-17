@@ -204,7 +204,13 @@ namespace mathlab
 
 	void Matrix::ExpandCol(size_t add_cols)
 	{
-
+		int n = mt_Data.size();
+		int add_num = add_cols * rows;
+		index += add_num;
+		for (int i = n ; i >= cols; i -= cols)
+			for (int j = 0; j < add_cols; j++)
+				mt_Data.insert(mt_Data.begin() + i, 0);
+		cols += add_cols;
 	}
 
 	void Matrix::InitZero(size_t row, size_t col)
