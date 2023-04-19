@@ -66,7 +66,6 @@ void BFS(Matrix maze, int stx, int sty, int edx, int edy)
 			q.push(_tright);
 		}
 	}
-	//相反向输出路径（测试）
 	while (_pp)
 	{
 		std::cout << '(' << _pp->x << ',' << _pp->y << ')' << std::endl;
@@ -106,6 +105,7 @@ int main()
 	std::cout << maze;
 
 	BFS(maze, 0, 0,9,9);
+
     return 0;
 }
 
