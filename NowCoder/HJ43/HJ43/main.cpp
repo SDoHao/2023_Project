@@ -14,7 +14,6 @@
 //
 //std::vector<point> v;
 //
-//
 //bool is_in_range(int x, int y)
 //{
 //	if (x >= 0 && x<M && y >= 0 && y<N)
@@ -28,7 +27,6 @@
 //{
 //	return is_in_range(x, y) && !visit[x][y] && !a[x][y];
 //}
-//
 //
 //bool is_finish(int x, int y)
 //{
@@ -74,7 +72,6 @@
 //		v.pop_back();
 //	}
 //}
-//
 //
 //int main()
 //{
