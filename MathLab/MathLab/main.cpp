@@ -17,7 +17,7 @@ int main()
 	Matrix maze1("1.csv");
 	Matrix maze2("2.csv");
 	std::cout << maze1 << std::endl;
-	maze1.ExpandCol(1);
+	maze1.ExpandCol(2);
 	std::cout << maze1 << std::endl;
 	//std::cout << maze2 << std::endl;
 	//std::cout << maze2.Inverse() << std::endl;
