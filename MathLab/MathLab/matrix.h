@@ -50,8 +50,8 @@ namespace mathlab
 			cols = _scv.GetColSize();
 			isInit = true;
 			index = rows * cols;
-			for (int i = 0; i < rows ; i++)
-				for (int j = 0; j < cols; j++)
+			for (size_t i = 0; i < rows ; i++)
+				for (size_t j = 0; j < cols; j++)
 					mt_Data.push_back(atof(_scv.GetData(i, j).c_str()));
 		}
 
@@ -207,8 +207,8 @@ namespace mathlab
 		int n = mt_Data.size();
 		int add_num = add_cols * rows;
 		index += add_num;
-		for (int i = n ; i >= cols; i -= cols)
-			for (int j = 0; j < add_cols; j++)
+		for (size_t i = n ; i >= cols; i -= cols)
+			for (size_t j = 0; j < add_cols; j++)
 				mt_Data.insert(mt_Data.begin() + i, 0);
 		cols += add_cols;
 	}
@@ -228,8 +228,8 @@ namespace mathlab
 	Matrix  Matrix::Transpose()
 	{
 		Matrix res(rows, cols);
-		for (int i = 0; i < rows; i++)
-			for (int j = 0; j < cols; j++)
+		for (size_t i = 0; i < rows; i++)
+			for (size_t j = 0; j < cols; j++)
 				res.mt_Data[j * cols + i] = mt_Data[i * cols+j];
 		return res;
 	}
@@ -245,21 +245,21 @@ namespace mathlab
 		double det = 1;
 		Matrix temp(*this);
 
-		for (int i = 0; i < rows - 1; i++) 
+		for (size_t i = 0; i < rows - 1; i++)
 		{
 			if (temp.mt_Data[i * cols + i] == 0)
 			{
 				det = 0;
 				break;
 			}
-			for (int j = i + 1; j < rows; j++) 
+			for (size_t j = i + 1; j < rows; j++)
 			{
 				double ratio = temp.mt_Data[j * cols + i] / temp.mt_Data[i * cols + i];
-				for (int k = i; k < cols; k++)
+				for (size_t k = i; k < cols; k++)
 					temp.mt_Data[j * cols + k] -= ratio * temp.mt_Data[i * cols + k];
 			}
 		}
-		for (int i = 0; i < rows; i++)
+		for (size_t i = 0; i < rows; i++)
 			det *= temp.mt_Data[i * cols + i];
 		return det;
 	}

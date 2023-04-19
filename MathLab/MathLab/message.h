@@ -7,7 +7,7 @@ namespace info
 {
 	static char *message[]
 	{
-		"Array out of bounds.",
+		"Beyond the bounds of the array.",
 		"Index at position %d exceeds array bounds (cannot exceed %d).",
 		"Array not initialized.",
 		"Inconsistent array dimensions to concatenate.",
