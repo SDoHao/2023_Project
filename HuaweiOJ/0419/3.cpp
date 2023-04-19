@@ -28,8 +28,6 @@ void count(int i, std::vector<int>& data)
 	int sum = 0;
 	min_l_t > min_l ? min_l : min_l_t;
 	min_r_t > min_r ? min_r : min_r_t;
-	if (i == data.size() - 1) 
-		i +=0;
 	int sub = min_l_t > min_r_t ? min_r_t : min_l_t;
 	for (int j = left; j <= right; j++)
 		sum += data[j];
