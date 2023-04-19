@@ -1,3 +1,96 @@
+//#define _CRT_SECURE_NO_WARNINGS
+//#include<stdio.h>
+//#include<vector>
+//
+//int a[20][20];
+//bool visit[20][20];
+//int M, N;
+//
+//struct point
+//{
+//	int x;
+//	int y;
+//};
+//
+//std::vector<point> v;
+//
+//
+//bool is_in_range(int x, int y)
+//{
+//	if (x >= 0 && x<M && y >= 0 && y<N)
+//	{
+//		return true;
+//	}
+//	return false;
+//}
+//
+//bool can_move(int x, int y)
+//{
+//	return is_in_range(x, y) && !visit[x][y] && !a[x][y];
+//}
+//
+//
+//bool is_finish(int x, int y)
+//{
+//	return x == M - 1 && y == N - 1;
+//}
+//
+//void move(int x, int y)
+//{
+//	if (is_finish(x, y))
+//	{
+//		for (auto i : v)
+//		{
+//			printf("(%d,%d)\n", i.x, i.y);
+//		}
+//		return;
+//	}
+//	if (can_move(x - 1, y))
+//	{
+//		visit[x - 1][y] = true;
+//		v.push_back({ x - 1,y });
+//		move(x - 1, y);
+//		v.pop_back();
+//	}
+//	if (can_move(x + 1, y))
+//	{
+//		visit[x + 1][y] = true;
+//		v.push_back({ x + 1,y });
+//		move(x + 1, y);
+//		v.pop_back();
+//	}
+//	if (can_move(x, y - 1))
+//	{
+//		visit[x][y - 1] = true;
+//		v.push_back({ x,y - 1 });
+//		move(x, y - 1);
+//		v.pop_back();
+//	}
+//	if (can_move(x, y + 1))
+//	{
+//		visit[x][y + 1] = true;
+//		v.push_back({ x,y + 1 });
+//		move(x, y + 1);
+//		v.pop_back();
+//	}
+//}
+//
+//
+//int main()
+//{
+//	scanf("%d%d", &M, &N);
+//	for (int i = 0; i<M; i++)
+//	{
+//		for (int j = 0; j<N; j++)
+//		{
+//			scanf("%d", &a[i][j]);
+//		}
+//	}
+//	v.push_back({ 0,0 });
+//	move(0, 0);
+//	return 0;
+//}
+
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -61,20 +154,17 @@ void BFS(vector<vector<int>> maze, int stx, int sty, int edx, int edy)
 			q.push(_tright);
 		}
 	}
-	//相反向输出路径（测试）
 	while (_pp)
 	{
 		cout << '(' << _pp->x << ',' << _pp->y << ')' << endl;
 		_pp = _pp->pre;
 	}
-
 	while (!path.empty())
 	{
 		_pp = path.front();
 		path.pop();
 		delete _pp;
 	}
-
 }
 
 int main()
