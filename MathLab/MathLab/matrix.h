@@ -375,7 +375,6 @@ namespace mathlab
 
 	Matrix operator/(Matrix & _matrix1, Matrix & _matrix2)
 	{
-
 		return _matrix1 * _matrix2.Inverse();
 	}
 
@@ -398,8 +397,6 @@ namespace mathlab
 			info::Message(2);
 		return os;
 	}
-
-
 
 }
 

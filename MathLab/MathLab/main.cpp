@@ -14,7 +14,6 @@ struct pos
 	int x;
 	int y;
 	pos *pre;
-	//pos(int xx, int yy, pos* p) :x(xx), y(yy), pre(p) {}
 };
 
 void BFS(Matrix maze, int stx, int sty, int edx, int edy)
