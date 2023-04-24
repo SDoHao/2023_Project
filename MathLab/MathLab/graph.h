@@ -103,8 +103,6 @@ namespace mathlab
 		return MT_Scale;
 	}
 
-
-
 	inline double Graph::AngleToRadian(double theta)
 	{
 		//½Ç¶È×ª»¡¶È
