@@ -91,10 +91,10 @@ void AtomBondScriptCreat(FILE *fp, POSCAR poscar, config rule[], CSVHolder * csv
 					{
 						//fprintf(fp, "向量为 %f %f %f \n", Vector[0], Vector[1], Vector[2]);
 						//两向量夹角
-						if (Vector[2] != 0 && Vector[1] != 0)
-							acosX = Vector[2] / sqrt(Vector[2] * Vector[2] + Vector[1] * Vector[1]);
-						else
+						if (Vector[2] == 0 && Vector[1] == 0)
 							acosX = 0;
+						else
+							acosX = Vector[2] / sqrt(Vector[2] * Vector[2] + Vector[1] * Vector[1]);
 						acosY = sqrt(Vector[2] * Vector[2] + Vector[1] * Vector[1]) / Diameter;
 						//fprintf(fp,"X %f Y %f\n", acosX, acosY);
 						//弧度制转为角度制
