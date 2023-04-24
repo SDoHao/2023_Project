@@ -103,7 +103,6 @@ int main()
 	std::cout << std::endl;
 	Matrix maze("maze.csv");
 	std::cout << maze;
-
 	BFS(maze, 0, 0,9,9);
 
     return 0;
